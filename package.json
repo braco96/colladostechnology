@@ -1,11 +1,25 @@
 {
-  "name": "collados",
+  "name": "squealing-star",
   "version": "1.0.0",
-  "description": "",
+  "description": "Propuesta",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
+  "dependencies": {
+    "@astrojs/react": "4.0.0",
+    "@fontsource-variable/inter": "5.1.0",
+    "@types/react": "18.3.14",
+    "@types/react-dom": "18.3.2",
+    "astro": "5.0.3",
+    "prettier": "3.4.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/braco96/colladostechnology.git"
@@ -16,8 +30,5 @@
   "bugs": {
     "url": "https://github.com/braco96/colladostechnology/issues"
   },
-  "homepage": "https://github.com/braco96/colladostechnology#readme",
-  "dependencies": {
-    "mysql": "^2.18.1"
-  }
+  "homepage": "https://github.com/braco96/colladostechnology#readme"
 }
