@@ -10,7 +10,20 @@
 
 /*jshint browser: true, strict: true, undef: true */
 /*global define: false */
+// app.js
+const db = require('./db'); // Requiere la conexión definida en db.js
 
+// Ejemplo de consulta
+db.query('SELECT * FROM tu_tabla', (error, resultados) => {
+    if (error) {
+        console.error('Error en consulta:', error);
+        return;
+    }
+    console.log('Resultados:', resultados);
+});
+
+// Cuando termines, si quieres cerrar la conexión
+// db.end();
 ( function( window ) {
 
 'use strict';
