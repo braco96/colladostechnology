@@ -4,54 +4,40 @@
     "blog": {
       "type": "object",
       "properties": {
+        "draft": {
+          "type": "boolean"
+        },
         "title": {
           "type": "string"
         },
-        "description": {
+        "snippet": {
           "type": "string"
         },
-        "contents": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "image": {
+          "type": "object",
+          "properties": {
+            "src": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "src",
+            "alt"
+          ],
+          "additionalProperties": false
+        },
+        "publishDate": {
+          "type": "string"
         },
         "author": {
+          "type": "string",
+          "default": "Astroship"
+        },
+        "category": {
           "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "authorImage": {
-          "type": "string"
-        },
-        "authorImageAlt": {
-          "type": "string"
-        },
-        "pubDate": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "date-time"
-            },
-            {
-              "type": "string",
-              "format": "date"
-            },
-            {
-              "type": "integer",
-              "format": "unix-time"
-            }
-          ]
-        },
-        "cardImage": {
-          "type": "string"
-        },
-        "cardImageAlt": {
-          "type": "string"
-        },
-        "readTime": {
-          "type": "number"
         },
         "tags": {
           "type": "array",
@@ -64,16 +50,13 @@
         }
       },
       "required": [
+        "draft",
         "title",
-        "description",
-        "contents",
-        "author",
-        "authorImage",
-        "authorImageAlt",
-        "pubDate",
-        "cardImage",
-        "cardImageAlt",
-        "readTime"
+        "snippet",
+        "image",
+        "publishDate",
+        "category",
+        "tags"
       ],
       "additionalProperties": false
     }
