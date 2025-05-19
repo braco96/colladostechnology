@@ -1,1 +1,0 @@
-import{A as r}from"./API.1ed030f5.js";class s{getReservations(){return r().get("/reservations")}registerReservation(e){return r().post("/reservations",e)}editReservation(e,t){return r().patch("/reservations/"+e,t)}cancelReservation(e){return r().delete("/reservations/"+e)}chooseTable(e,t){return r().post("/reservations/choose-table/"+e,t)}}const a=new s;export{a as r};

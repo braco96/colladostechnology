@@ -1,1 +1,0 @@
-import{A as s}from"./API.1ed030f5.js";const n=t=>Object.keys(t).reduce((r,a)=>{var l;return{...r,[a]:(l=t[a])==null?void 0:l.value}},{});class b{registerTable(e){return s().post("/tables",e)}getAllTables(){return s().get("/tables")}freeTable(e){return s().delete("/tables/"+e)}}const o=new b;export{n as g,o as t};
