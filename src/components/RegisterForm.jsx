@@ -7,14 +7,20 @@ export default function RegisterForm() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const API_BASE_URL = "https://darkgreen-walrus-291443.hostingersite.com";
+  // Detectar si estamos en producción o local
+  const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+  // URL base según entorno
+  const API_BASE_URL = isLocal
+    ? "http://localhost:8000"
+    : "https://darkgreen-walrus-291443.hostingersite.com/api";
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/users.php`)
+    fetch(`${API_BASE_URL}/users.php`)
       .then((res) => res.json())
       .then(setUsers)
       .catch(() => setError("Error al cargar usuarios"));
-  }, []);
+  }, [API_BASE_URL]);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -27,18 +33,22 @@ export default function RegisterForm() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/register.php`, {
+      const formData = new FormData();
+      formData.append("email", form.email);
+      formData.append("password", form.password);
+
+      const res = await fetch(`${API_BASE_URL}/register.php`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: formData,
       });
+
       const data = await res.json();
 
       if (res.ok) {
         setMessage(data.success);
         setForm({ email: "", password: "" });
 
-        const resUsers = await fetch(`${API_BASE_URL}/api/users.php`);
+        const resUsers = await fetch(`${API_BASE_URL}/users.php`);
         const usersData = await resUsers.json();
         setUsers(usersData);
       } else {
@@ -46,9 +56,9 @@ export default function RegisterForm() {
       }
     } catch {
       setError("Error en la conexión");
-    } finally {
-      setLoading(false);
     }
+
+    setLoading(false);
   };
 
   return (
