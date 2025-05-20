@@ -13,7 +13,7 @@ export default function RegisterForm() {
   // URL base según entorno
   const API_BASE_URL = isLocal
     ? "http://localhost:8000"
-    : "http://127.0.0.1:3306/api";
+    : "http://localhost:3306/api";
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/users.php`)
