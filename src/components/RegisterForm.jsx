@@ -13,7 +13,7 @@ export default function RegisterForm() {
   // URL base según entorno
   const API_BASE_URL = isLocal
     ? "http://localhost:8000"
-    : "https://darkgreen-walrus-291443.hostingersite.com/api";
+    : "localhost/api";
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/users.php`)
