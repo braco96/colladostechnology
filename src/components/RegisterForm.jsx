@@ -8,7 +8,15 @@ export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
 
   // Detectar si estamos en producción o local
-  const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+  const [isLocal, setIsLocal] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
+      setIsLocal(hostname === "localhost" || hostname === "127.0.0.1");
+    }
+  }, []);
+  
 
   // URL base según entorno
   const API_BASE_URL = isLocal
