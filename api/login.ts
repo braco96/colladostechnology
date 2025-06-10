@@ -1,7 +1,7 @@
 // src/pages/api/login.ts
 import type { APIRoute } from "astro";
 import bcrypt from "bcryptjs";
-import { createConnection, closeConnection } from "server/db.ts";
+import { createConnection, closeConnection } from "@/pages/api/db";
 
 export const prerender = false;
 
